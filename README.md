@@ -121,5 +121,4 @@ Este proyecto me permitió comprender el flujo de trabajo básico en Git y GitHu
 ---
 
 ### 🚀 **Gracias por visitar este repositorio!**
-Este fue mi primer acercamiento con **Git y GitHub** dentro de mi formación en **SoftServe Academy**. ¡Espero seguir mejorando y documentando mi aprendizaje!  
-Si tienes sugerencias o comentarios, ¡estaré feliz de escucharlos!
+Este fue mi primer acercamiento con **Git y GitHub** dentro de mi formación en **SoftServe Academy**. ¡Espero seguir mejorando y documentando mi aprendizaje! Si tienes sugerencias o comentarios, ¡estaré feliz de escucharlos!
