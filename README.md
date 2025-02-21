@@ -2,7 +2,7 @@
 
 ## Fundamentos de Python 2025 - SoftServe Academy
 
-Este repositorio forma parte de mi aprendizaje en **Git y GitHub** dentro del curso **Fundamentos de Python 2025** de SoftServe Academy. Aquí documentaré los comandos utilizados, el proceso realizado y los aprendizajes adquiridos mientras trabajaba con mi primer repositorio.
+Este repositorio forma parte de mi aprendizaje en **Git y GitHub** dentro del curso **Fundamentos de Python 2025** de SoftServe Academy. Aquí documentaré los comandos utilizados, los desafíos que enfrenté y cómo logré solucionarlos.
 
 ---
 
@@ -12,104 +12,159 @@ El propósito de esta actividad fue:
 
 - Clonar un repositorio desde GitHub a mi máquina local.
 - Modificar un archivo (`Zen.txt`) agregando una línea del **Zen de Python**.
-- Agregar cambios al *index stage* y realizar un *commit*.
-- Sincronizar los cambios con el repositorio remoto en GitHub.
-- Verificar el historial de cambios en Git.
+- Resolver problemas cuando Git no detectaba cambios en `Zen.txt`.
+- Subir los cambios al repositorio remoto en GitHub.
+- Revisar el historial de cambios en Git.
 
 ---
 
-## ⚙️ **Comandos Git Utilizados**
+## ⚙️ Comandos Git Utilizados
 
-A continuación, se documentan los comandos utilizados y su propósito:
-
-### 1️⃣ **Clonar un repositorio desde GitHub**
-```
+### 1️⃣ Clonar un repositorio desde GitHub
+```bash
 git clone https://github.com/samantha09s/PrimerRepo.git
 ```
 - **Objetivo:** Descargar el repositorio a mi computadora para poder trabajar con él.
 
-### 2️⃣ **Acceder a la carpeta del repositorio**
-```
+### 2️⃣ Acceder a la carpeta del repositorio
+```bash
 cd PrimerRepo
 ```
 - **Objetivo:** Moverse dentro del directorio del repositorio clonado.
 
-### 3️⃣ **Verificar los archivos en la carpeta del repositorio**
-```
+### 3️⃣ Verificar los archivos en la carpeta del repositorio
+```bash
 dir
 ```
 - **Objetivo:** Comprobar que `Zen.txt` está presente en el repositorio local.
 
-### 4️⃣ **Agregar un archivo al index stage**
-```
+### 4️⃣ Agregar un archivo al index stage
+```bash
 git add Zen.txt
 ```
-- **Objetivo:** Mover `Zen.txt` al área de preparación (*index stage*), indicando que está listo para ser *commiteado*.
+- **Objetivo:** Mover `Zen.txt` al área de preparación (*staging area*), indicando que está listo para ser *commiteado*.
 
-### 5️⃣ **Verificar el estado del repositorio**
-```
+### 5️⃣ Verificar el estado del repositorio
+```bash
 git status
 ```
 - **Objetivo:** Comprobar si hay archivos nuevos, modificados o si todo está actualizado.
 
-> [!NOTE]
+> [!NOTE]  
 > Si `git status` muestra _"nothing to commit, working tree clean"_, significa que no hay cambios pendientes.
 
-### 6️⃣ **Guardar los cambios en el repositorio local (commit)**
-```
+### 6️⃣ Guardar los cambios en el repositorio local (commit)
+```bash
 git commit -m "Añade Zen.txt con la línea del Zen de Python."
 ```
 - **Objetivo:** Guardar el estado actual del archivo con un mensaje descriptivo.
 
-### 7️⃣ **Obtener los cambios más recientes del repositorio remoto**
-```
+### 7️⃣ Obtener los cambios más recientes del repositorio remoto
+```bash
 git pull origin main --rebase
 ```
 - **Objetivo:** Descargar y aplicar los cambios más recientes del repositorio en GitHub para evitar conflictos antes de subir nuevos cambios.
 
-### 8️⃣ **Subir cambios al repositorio remoto en GitHub**
-```
+### 8️⃣ Subir cambios al repositorio remoto en GitHub
+```bash
 git push origin main
 ```
-- **Objetivo:** Enviar los cambios confirmados (`commit`) al repositorio en GitHub.
+- **Objetivo:** Enviar los cambios confirmados (commit) al repositorio en GitHub.
 
-> [!IMPORTANT]
+> [!IMPORTANT] 
 > Git pedirá autenticación si es la primera vez que se usa.
 
-### 9️⃣ **Ver el historial de commits**
-```
+### 9️⃣ Ver el historial de commits
+```bash
 git log --oneline
 ```
-- **Objetivo:** Revisar los cambios registrados en el repositorio de manera resumida.  
+- **Objetivo:** Revisar los cambios registrados en el repositorio de manera resumida.
 
 ---
 
-## 📸 Capturas de Pantalla
+## 🚨 Problema Encontrado: Git no detectaba cambios en `Zen.txt`
 
-Aquí se incluyen capturas del proceso en la terminal:
+### Situación
+Cuando intenté hacer `git add Zen.txt`, seguido de `git commit`, Git indicaba que no había cambios en `Zen.txt`, aunque lo había editado.
 
-1. 📌 **Clonación del repositorio y verificación de archivos**  
-   ![image](https://github.com/user-attachments/assets/e54d90d3-5c37-4c3b-a2a4-11ef2ee4643b)
+```bash
+nothing to commit, working tree clean
+```
 
-2. 📌 **Edición y agregado de `Zen.txt`**  
-   ![image](https://github.com/user-attachments/assets/4bcab76e-8b99-429c-9315-a7b9e37fb506)
+### 🔎 Solución aplicada
+1. Verificamos si realmente había modificaciones:
+   ```bash
+   git diff Zen.txt
+   ```
+   - El comando mostró que **no había diferencias** en el contenido del archivo.
 
-3. 📌 **Commit y sincronización con GitHub**
-   ![image](https://github.com/user-attachments/assets/feb53248-877d-477b-af4e-8a28f6849421)
+2. Para forzar la detección de cambios, agregamos una nueva línea al archivo:
+   ```bash
+   "Añade Zen.txt con la línea del Zen de Python." >> Zen.txt
+   ```
+
+3. Luego, forzamos la adición del archivo al *staging area*:
+   ```bash
+   git add Zen.txt --force
+   ```
+
+4. Confirmamos los cambios con un commit:
+   ```bash
+   git commit -m "Forzar cambio en Zen.txt"
+   ```
+
+5. Finalmente, subimos el archivo al repositorio remoto:
+   ```bash
+   git push origin main
+   ```
+
+> **Resultado:** `Zen.txt` fue detectado correctamente y los cambios se reflejaron en GitHub.
 
 ---
 
-## 🎯 **Reflexiones**
+## 📸 Capturas de Pantalla del Proceso
 
-Durante este ejercicio, aprendí lo siguiente:
+### Clonación del repositorio y verificación de archivos
+📌 Se verificó que `Zen.txt` estaba presente en el repositorio local.  
+![Clonación del repositorio](https://github.com/user-attachments/assets/e54d90d3-5c37-4c3b-a2a4-11ef2ee4643b)
 
-- **Cómo clonar un repositorio desde GitHub** y trabajar con él en mi máquina local.
-- **La importancia del index stage** (`git add`) y cómo preparar archivos para un commit.
-- **La estructura de trabajo en Git** (_working directory_ → _staging area_ → _local repository_ → _remote repository_).
-- **Cómo evitar conflictos usando `git pull --rebase`** antes de hacer un `git push`.
+---
+
+### Intento de agregar cambios sin éxito
+📌 Git no detectaba cambios en `Zen.txt`.  
+![Error al agregar cambios](https://github.com/user-attachments/assets/7e6fc9d4-46de-453b-abde-3c8744c6a8e0)
+
+---
+
+### Solución aplicada: Forzar la detección de cambios
+📌 Se usaron `git add --force` y `git commit` para resolver el problema.  
+![Solución aplicada](https://github.com/user-attachments/assets/372ebaef-2bfe-4c7f-bf64-dfc7aa43c473)
+
+---
+
+### Subida del archivo corregido a GitHub
+📌 Se verificó que el cambio se reflejaba en el repositorio remoto.  
+![Subida a GitHub](https://github.com/user-attachments/assets/66a15a38-14aa-4d8a-96b0-5c28f9191caf)
+
+📌 Confirmación de la actualización en `Zen.txt`.  
+![Archivo Zen.txt](https://github.com/user-attachments/assets/a4dba0ba-01ba-4278-9ab8-fc447a0132be)
+
+---
+
+## 🎯 Reflexiones
+
+Este ejercicio fue una excelente introducción a Git y GitHub. Mis principales aprendizajes fueron:
+
+- **Cómo clonar un repositorio** y configurar un entorno local para trabajar con Git.
+- **La importancia del staging (`git add`)** antes de confirmar cambios con `git commit`.
+- **Cómo manejar errores comunes**, como cuando Git no detecta cambios en un archivo.
+- **La estructura del flujo de trabajo en Git** (_working directory_ → _staging area_ → _local repository_ → _remote repository_).
+- **Cómo evitar conflictos** usando `git pull --rebase` antes de `git push`.
 - **Cómo revisar el historial de cambios** con `git log`.
 
-Este proyecto me permitió comprender el flujo de trabajo básico en Git y GitHub, sentando las bases para proyectos más avanzados.
+También aprendí que Git es muy estricto en cuanto a detectar cambios, y que a veces es necesario forzar su reconocimiento cuando el archivo parece sin modificaciones.
+
+Este proyecto me permitió aplicar comandos básicos y solucionar errores de principiante en un entorno real, lo cual me da confianza para seguir aprendiendo y enfrentando desafíos más avanzados.
 
 ---
 
@@ -120,5 +175,6 @@ Este proyecto me permitió comprender el flujo de trabajo básico en Git y GitHu
 
 ---
 
-### 🚀 **Gracias por visitar este repositorio!**
-Este fue mi primer acercamiento con **Git y GitHub** dentro de mi formación en **SoftServe Academy**. ¡Espero seguir mejorando y documentando mi aprendizaje! Si tienes sugerencias o comentarios, ¡estaré feliz de escucharlos!
+### 🚀 ¡Gracias por visitar este repositorio!
+Este fue mi primer acercamiento con **Git y GitHub** dentro de mi formación en **SoftServe Academy**.
+¡Espero seguir mejorando y documentando mi aprendizaje! Si tienes sugerencias o comentarios, ¡estaré feliz de escucharlos!
