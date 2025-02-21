@@ -56,3 +56,7 @@ The Zen of Python, by Tim Peters
 54.If the implementation is hard to explain, it's a bad idea.
 55.If the implementation is easy to explain, it may be a good idea.
 56.Namespaces are one honking great idea -- let's do more of those!
+
+Añade Zen.txt con la línea del Zen de Python.
+- Samantha Munguía Alfaro
+- Practical Task
