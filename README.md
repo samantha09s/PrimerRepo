@@ -94,8 +94,8 @@ Aquí se incluyen capturas del proceso en la terminal:
 2. 📌 **Edición y agregado de `Zen.txt`**  
    ![image](https://github.com/user-attachments/assets/4bcab76e-8b99-429c-9315-a7b9e37fb506)
 
-3. 📌 **Commit y sincronización con GitHub**  
-   ![image](https://github.com/user-attachments/assets/81852035-f05c-4ce3-99e1-1c5c6b0539b2)
+3. 📌 **Commit y sincronización con GitHub**
+   ![image](https://github.com/user-attachments/assets/feb53248-877d-477b-af4e-8a28f6849421)
 
 ---
 
